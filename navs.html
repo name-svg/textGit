@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='./vue.js'></script>
+    <link rel='stylesheet' href='animate.css' type='text/css'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <bbb></bbb>
+        <ccc></ccc>
+    </div>
+</body>
+<template id='navs'>
+<div class='hi'>
+    <span @click='give'><img src='./img/timg.jpg'></span>
+</div>
+</template>
+<template id='ccc'>
+    <transition enter-active-class='animated flip'>
+            <ul class=aaa v-show='flag'>
+                    <li>
+                       <img src='./img/timg.jpg'>
+                       <h5>admin</h5> 
+                    </li>
+                    <li v-for="items in title">{{items}}</li>
+                </ul>
+    </transition>
+</template>
+<script>
+ let ccc={
+     template:'#ccc',
+     data(){
+         return{
+            title:['订单','频道','退出'],
+            flag:false
+         }
+     },
+     methods:{
+     },
+     mounted(){
+        Event.$on('tack',(a)=>{
+            this.flag=a
+        })
+     }
+     
+
+ }   
+ let bbb ={
+     template:'#navs',
+     data(){
+         return {
+             flag2:false
+         }
+     },
+     methods:{
+        give(){
+            this.flag2=!this.flag2
+            Event.$emit('tack',this.flag2)
+         }
+     }
+ }
+ let Event = new Vue()
+ new Vue({
+     el:'#app',
+     data:{
+     },
+     methods:{
+
+     },
+     components:{
+         bbb,
+         ccc,
+     }
+ })
+</script>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        list-style:none;
+    }
+ .hi{
+     width:100%;
+     height:55px;
+     background:#ccc
+ }
+ .hi span{
+     float:right;
+     width:50px;
+     height:50px;
+     margin-right:10px;
+ }
+ .hi img{
+     width:100%;
+     height:100%;
+     border-radius:50%;
+ }
+.aaa{
+    padding:10px;
+    box-sizing:border-box;
+    width:120px;
+    background:#333;
+    text-align:center;
+    float:right;
+}
+.aaa li{
+    color:#fff;
+    line-height:25px;
+    border-bottom:1px solid #fff;
+}
+.aaa li img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+}
+.aaa li:first-of-type{
+    
+}
+</style>
+</html>
