@@ -11,7 +11,7 @@
 <body>
     <div id='app'>
         <bbb></bbb>
-        <ccc></ccc>
+        <ddd></ddd>
     </div>
 </body>
 <template id='navs'>
@@ -19,7 +19,7 @@
     <span @click='give'><img src='./img/timg.jpg'></span>
 </div>
 </template>
-<template id='ccc'>
+<template id='ddd'>
     <transition enter-active-class='animated flip'>
             <ul class=aaa v-show='flag'>
                     <li>
@@ -31,8 +31,8 @@
     </transition>
 </template>
 <script>
- let ccc={
-     template:'#ccc',
+ let ddd={
+     template:'#ddd',
      data(){
          return{
             title:['订单','频道','退出'],
@@ -73,7 +73,7 @@
      },
      components:{
          bbb,
-         ccc,
+         ddd,
      }
  })
 </script>
